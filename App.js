@@ -1,20 +1,14 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import styles from "./styles";
+import Box from "./Box";
 
 export default function App() {
   return (
-  <View style={styles.container}>
-    <View style={styles.box}>
-      <Text style={styles.boxText}>#1</Text>
+    <View style={styles.container}>
+      <Box>#1</Box>
+      <Box>#2</Box>
+      <Box>#3</Box>
     </View>
-    <View style={styles.box}>
-      <Text style={styles.boxText}>#2</Text>
-    </View>
-    <View style={styles.box}>
-      <Text style={styles.boxText}>#3</Text>
-    </View>
-  </View>
   );
-  }
-
+}

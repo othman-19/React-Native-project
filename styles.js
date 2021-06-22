@@ -27,5 +27,11 @@ export default StyleSheet.create({
   boxText: {
     color: "darkslategray",
     fontWeight: "bold"
-  }
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignSelf: "stretch"
+  },
 });

@@ -34,4 +34,11 @@ export default StyleSheet.create({
     justifyContent: "space-around",
     alignSelf: "stretch"
   },
+  column: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    alignSelf: "stretch"
+  }
 });

@@ -5,7 +5,7 @@ import styles from "../styles";
 export default function({ navigation }) {
   return (
   <View style={styles.container}>
-    <Text>{navigation.getParam("title")}</Text>
+    <Text>{navigation.getParam("content")}</Text>
   </View>
 );
 }

@@ -12,7 +12,7 @@ export default function Details({ navigation }) {
 
 Details.navigationOptions = ({ navigation }) => ({
   title: navigation.getParam("title"),
-  headerRight: (
+  headerRight: () => (
     <Button
       title="Buy"
       onPress={() => {}}

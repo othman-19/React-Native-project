@@ -13,6 +13,19 @@ const { createNavigator } = Platform.select({
   android: { createNavigator: createDrawerNavigator }
 });
 
-export default createAppContainer(
-  createNavigator({ Home, News, Settings }, { initialRouteName: "Home" })
+const navigator = createNavigator({ Home, News, Settings})
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: { screen: navigator },
+    Details,
+    Settings,
+    News,
+  },
+  { 
+    initialRouteName: "Home"
+  }
 );
+
+export default createAppContainer(AppNavigator);
+

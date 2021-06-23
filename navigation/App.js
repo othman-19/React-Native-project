@@ -6,7 +6,13 @@ import { Platform } from "react-native";
 import Home from "./components/Home";
 import Settings from "./components/Settings";
 import Details from "./components/Details";
+import News from "./components/News";
+
+const { createNavigator } = Platform.select({
+  ios: { createNavigator: createBottomTabNavigator },
+  android: { createNavigator: createDrawerNavigator }
+});
 
 export default createAppContainer(
-  createStackNavigator({ Home, Settings, Details }, { initialRouteName: "Home" })
+  createNavigator({ Home, News, Settings }, { initialRouteName: "Home" })
 );

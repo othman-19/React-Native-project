@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import styles from "../styles";
 
-export default function Home({ navigation }) {
+export default function Home({ navigation, screenProps: { stock } }) {
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
@@ -11,38 +11,38 @@ export default function Home({ navigation }) {
         onPress={() => navigation.navigate("Settings")}
       />
       <Button
-        title="First Item"
+        title={`First Item (${stock.first})`}
         onPress={() => navigation.navigate(
           "Details",
           { 
             id: "first",
             title:"First Item",
             content: "First Item Content",
-            stock: 0
+            stock: stock.first
           }
         )}
       />
       <Button
-        title="Second Item"
+        title={`Second Item (${stock.second})`}
         onPress={() => navigation.navigate(
           "Details",
           {
             id: "second",
             title:"Second Item",
             content: "Second Item Content",
-            stock: 10
+            stock: stock.second
           }
         )}
       />
       <Button
-        title="Third Item"
+        title={`Third Item (${stock.third})`}
         onPress={() => navigation.navigate(
           "Details",
           {
             id: "third",
             title:"Third Item",
             content: "Third Item Content",
-            stock: 200
+            stock: stock.third
           }
         )}
       />

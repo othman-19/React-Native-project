@@ -13,14 +13,18 @@ export default function Details({ navigation }) {
 Details.navigationOptions = ({
   navigation,
   screenProps: { stock, updateStock },
-}) => ({
-  id : navigation.getParam("id"),
-  title: navigation.getParam("title"),
-  headerRight: () => (
+}) => {
+  const id = navigation.getParam("id");
+  const title = navigation.getParam("title");
+
+  return {
+    id,
+    title,
+    headerRight: () => (
     <Button
       title="Buy"
       onPress={() => updateStock(id)}
       disabled={stock[id] === 0}
     />
-  )
-});
+  )}
+};

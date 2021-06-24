@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -40,7 +41,7 @@ export default function App() {
   function updateStock(id) {
     setStock({ ...stock, [id]: stock[id] === 0 ? 0 : stock[id] - 1 });
   }
-  
+
   return <Nav screenProps={{ stock, updateStock }} />;
 }
 

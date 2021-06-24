@@ -10,13 +10,17 @@ export default function Details({ navigation }) {
   );
 }
 
-Details.navigationOptions = ({ navigation }) => ({
+Details.navigationOptions = ({
+  navigation,
+  screenProps: { stock, updateStock },
+}) => ({
+  id : navigation.getParam("id"),
   title: navigation.getParam("title"),
   headerRight: () => (
     <Button
       title="Buy"
-      onPress={() => {}}
-      disabled={navigation.getParam("stock") === 0}
+      onPress={() => updateStock(id)}
+      disabled={stock[id] === 0}
     />
   )
 });

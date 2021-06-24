@@ -27,5 +27,20 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(AppNavigator);
+const Nav = createAppContainer(AppNavigator);
+
+export default function App() {
+
+  const [stock, setStock] = useState({
+    first: 1,
+    second: 0,
+    third: 200
+  });
+
+  function updateStock(id) {
+    setStock({ ...stock, [id]: stock[id] === 0 ? 0 : stock[id] - 1 });
+  }
+  
+  return <Nav screenProps={{ stock, updateStock }} />;
+}
 

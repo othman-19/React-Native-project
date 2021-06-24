@@ -14,7 +14,8 @@ export default function Home({ navigation }) {
         title="First Item"
         onPress={() => navigation.navigate(
           "Details",
-          {
+          { 
+            id: "first",
             title:"First Item",
             content: "First Item Content",
             stock: 0
@@ -26,6 +27,7 @@ export default function Home({ navigation }) {
         onPress={() => navigation.navigate(
           "Details",
           {
+            id: "second",
             title:"Second Item",
             content: "Second Item Content",
             stock: 10
@@ -37,6 +39,7 @@ export default function Home({ navigation }) {
         onPress={() => navigation.navigate(
           "Details",
           {
+            id: "third",
             title:"Third Item",
             content: "Third Item Content",
             stock: 200

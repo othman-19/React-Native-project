@@ -17,32 +17,16 @@ export default StyleSheet.create({
     backgroundColor: "ghostwhite",
     textAlign: "center"
   },
-  box: {
-    height: 100,
-    width: 100,
-    justifyContent: "center",
-    alignItems: 'center',
-    backgroundColor: "lightgray",
-    borderWidth: 1,
-    borderStyle: "dashed",
-    borderColor: "darkslategray"
+  filter: {
+    height: 40,
+    width: 200
   },
-  boxText: {
-    color: "darkslategray",
-    fontWeight: "bold"
-  },
-  row: {
+  controls: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-around",
-    alignSelf: "stretch"
-  },
-
-  column: {
-    flex: 1,
-    flexDirection: "column",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "space-around",
-    alignSelf: "stretch"
+    padding: 10,
+    backgroundColor: "white"
   }
 });

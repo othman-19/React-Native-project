@@ -12,6 +12,13 @@ export default StyleSheet.create({
       android: { paddingTop: StatusBar.currentHeight }
     })
   },
+  item: {
+    margin: 5,
+    padding: 5,
+    color: "slategrey",
+    backgroundColor: "ghostwhite",
+    textAlign: "center"
+  },
   box: {
     height: 100,
     width: 100,

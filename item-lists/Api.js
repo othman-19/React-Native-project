@@ -1,6 +1,9 @@
-const items = new Array(100).
-  fill(null).
-  map((v, i) => `Item ${i}`);
+function* genItems() {
+  let cnt = 0;
+  while (true) {
+    yield `Item ${cnt++}`;
+  }
+}
 
 function filterAndSort(data, text, asc) {
   return data

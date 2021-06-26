@@ -16,6 +16,16 @@ function filterAndSort(data, text, asc){
     );
 }
 
+export function fetchItems(filter, asc) {
+  return new Promise(resolve => {
+    resolve({
+      json: () => Promise.resolve({
+        items: filterAndSort(items, filter, asc)
+      })
+    });
+  });
+}
+
 export default function ListContainer() {
   const itemsList = new Array(100).fill(null).map((v, i) => `Item ${i}`);
   const [asc, setAsc] = useState(true);

@@ -9,6 +9,8 @@ export default function List({ data, fetchItems }) {
       data={data}
       renderItem={({ item }) => <Text style={styles.item}>{item.value}</Text>}
       onEndReached={fetchItems}
+      keyExtractor={item => item.key}
+      onEndThreshold={0.7}
     />
   );
 }

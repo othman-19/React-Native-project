@@ -5,6 +5,8 @@ function* genItems() {
   }
 }
 
+const items = genItems();
+
 function filterAndSort(data, text, asc) {
   return data
     .filter(i => text.length === 0 || i.includes(text))
@@ -20,7 +22,9 @@ export function fetchItems(filter, asc) {
     resolve({
       json: () =>
         Promise.resolve({
-          items: filterAndSort(items, filter, asc)
+          items: new Array(20)
+            .fill(null)
+            .map(() => items.next().value)
         })
     });
   });

@@ -1,31 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Text, FlatList } from "react-native";
-import ListControls from "./ListControls";
 import styles from "../styles";
 
-export default function List({ Controls, data, onFilter, onSort, asc }) {
+export default function List({ data, fetchItems }) {
   return (
     <FlatList
       data={data}
-      ListHeaderComponent={<Controls {...{ onFilter, onSort, asc }} />}
-      renderItem={({ item }) => (
-        <Text style={styles.item}>
-          {item.value}
-        </Text>
-      )}
+      renderItem={({ item }) => <Text style={styles.item}>{item.value}</Text>}
+      onEndReached={fetchItems}
     />
   );
 }
 
 List.propTypes = {
-  Controls: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
-  onFilter: PropTypes.func.isRequired,
-  onSort: PropTypes.func.isRequired,
-  asc: PropTypes.bool.isRequired
-};
-
-List.defaultProps = {
-  Controls: ListControls
+  fetchItems: PropTypes.func.isRequired
 };

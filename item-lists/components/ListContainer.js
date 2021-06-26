@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { fetchItems } from "../Api";
 import List from "./List";
 
 function mapItems(items) {
@@ -7,43 +8,39 @@ function mapItems(items) {
   );
 }
 
-function filterAndSort(data, text, asc){
-  return data
-    .filter(i => text.length === 0 || i.includes(text))
-    .sort( asc
-      ? (a, b) => (b > a ? -1 : a === b)
-      : (a, b) => (a > b ? -1 : a === b)
-    );
-}
-
-export function fetchItems(filter, asc) {
-  return new Promise(resolve => {
-    resolve({
-      json: () => Promise.resolve({
-        items: filterAndSort(items, filter, asc)
-      })
-    });
-  });
-}
-
 export default function ListContainer() {
-  const itemsList = new Array(100).fill(null).map((v, i) => `Item ${i}`);
+
   const [asc, setAsc] = useState(true);
   const [filter, setFilter] = useState("");
-  const [data, setData] = useState(
-    filterAndSort(itemsList,"")
-  );
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchItems(filter, asc)
+      .then(resp => resp.json())
+      .then(({ items }) => {
+        setData(mapItems(items));
+      });
+  }, []);
+
   return (
     <List
-      data={mapItems(data)}
+      data={data}
       asc={asc}
       onFilter={text => {
-        setFilter(text);
-        setData(filterAndSort(data, text, asc));
+        fetchItems(text, asc)
+          .then(resp => resp.json())
+          .then(({ items }) => {
+            setFilter(text);
+            setData(mapItems(items));
+          });
       }}
       onSort={() => {
-        setAsc(!asc);
-        setData(filterAndSort(data, filter, asc));
+        fetchItems(filter, !asc)
+          .then(resp => resp.json())
+          .then(({ items }) => {
+            setAsc(!asc);
+            setData(mapItems(items));
+          });
       }}
     />
   );

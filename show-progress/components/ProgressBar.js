@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, Text } from "react-native";
-import styles from "./styles";
+import styles from "../styles";
 import { ProgressBarComponent, progressProps } from "./ProgressBarComponent";
 
 function ProgressLabel({ show, progress }) {
   return (
     show && (
-      <Text style={styles.progressText}>{Math.round(progress * 100)}%</Text>
+      <Text style={styles.progressText}>{Math.floor(progress * 100)}%</Text>
     )
   );
 }

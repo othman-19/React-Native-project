@@ -8,7 +8,7 @@ export default function MeasuringProgress() {
 
   function updateProgress() {
     setProgress(currentProgress => {
-      if (currentProgress < 1) {
+      if (currentProgress < 0.99) {
         setTimeout(updateProgress, 300);
       }
       return currentProgress + 0.01;

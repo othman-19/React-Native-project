@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text } from "react-native";
 import styles from "../styles";
-import loading from "./loading";
+import loading from "./Loading";
 
-const Second = loading(({ navigation }) => (
+const Third = loading(({ navigation }) => (
   <View style={styles.container}>
     <Text
       style={styles.item}

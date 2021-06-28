@@ -1,9 +1,9 @@
 import React from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import First from "./First";
-import Second from "./Second";
-import Third from "./Third";
+import First from "./components/First";
+import Second from "./components/Second";
+import Third from "./components/Third";
 
 export default createAppContainer(
   createStackNavigator(
@@ -11,7 +11,7 @@ export default createAppContainer(
       First: {
         screen: props => (
           <First
-            promise={new Promise(resolve => setTimeout(resolve, 1000))}
+            promise={new Promise(resolve => setTimeout(resolve, 5000))}
             {...props}
           />
         )
@@ -19,7 +19,7 @@ export default createAppContainer(
       Second: {
         screen: props => (
           <Second
-            promise={new Promise(resolve => setTimeout(resolve, 1000))}
+            promise={new Promise(resolve => setTimeout(resolve, 5000))}
             {...props}
           />
         )
@@ -27,7 +27,7 @@ export default createAppContainer(
       Third: {
         screen: props => (
           <Third
-            promise={new Promise(resolve => setTimeout(resolve, 1000))}
+            promise={new Promise(resolve => setTimeout(resolve, 5000))}
             {...props}
           />
         )

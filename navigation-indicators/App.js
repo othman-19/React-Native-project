@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import styles from "./styles";
-import Box from "./components/Box";
+import Box from "./components/Loading";
 
 export default function App() {
   return (

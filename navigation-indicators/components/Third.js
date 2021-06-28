@@ -21,4 +21,4 @@ const Second = loading(({ navigation }) => (
   )
 );
 
-export default Second;
+export default Third;

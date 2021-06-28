@@ -1,14 +1,40 @@
 import React from "react";
-import { View } from "react-native";
-import styles from "./styles";
-import Box from "./components/Loading";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import First from "./First";
+import Second from "./Second";
+import Third from "./Third";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Box>#1</Box>
-      <Box>#2</Box>
-      <Box>#3</Box>
-    </View>
-  );
-}
+export default createAppContainer(
+  createStackNavigator(
+    {
+      First: {
+        screen: props => (
+          <First
+            promise={new Promise(resolve => setTimeout(resolve, 1000))}
+            {...props}
+          />
+        )
+      },
+      Second: {
+        screen: props => (
+          <Second
+            promise={new Promise(resolve => setTimeout(resolve, 1000))}
+            {...props}
+          />
+        )
+      },
+      Third: {
+        screen: props => (
+          <Third
+            promise={new Promise(resolve => setTimeout(resolve, 1000))}
+            {...props}
+          />
+        )
+      },
+    },
+    { initialRouteName: "First" }
+  )
+);
+
+

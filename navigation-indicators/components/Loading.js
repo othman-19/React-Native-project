@@ -6,8 +6,11 @@ export default function loading(Wrapped) {
   return function LoadingWrapper(props) {
     const [loading, setLoading] = useState(true);
     useEffect(
-      () => {props.promise.then(
-        () => setLoading(false), () => setLoading(false));
+      () => {props.promise
+        .then(
+          () => setLoading(false),
+          () => setLoading(false)
+        );
       },
       []
     );

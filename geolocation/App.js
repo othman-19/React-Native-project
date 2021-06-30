@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, View } from "react-native";
+import { Text, View} from "react-native";
+import * as Permissions from 'expo-permissions';
+import * as Location from 'expo-location';
 import styles from "./styles";
 
 const API_KEY = "";
-const URL = `https://maps.google.com/maps/api/geocode/json?key=${API_KEY}&latlng=`;
+const URL = `https://maps.google.com/maps/api/geocode/json?sensor=false&callback=myMap`;
+//"https://maps.googleapis.com/maps/api/js?key="
 
 export default function WhereAmI() {
   const [address, setAddress] = useState("loading...");
@@ -14,22 +17,28 @@ export default function WhereAmI() {
     function setPosition({ coords: { latitude, longitude } }) {
       setLongitude(longitude);
       setLatitude(latitude);
-      fetch(`${URL}${latitude},${longitude}`)
+      fetch(`${URL}`)
         .then(
-          (resp) => resp.json(),
+          (resp) => {
+            return resp.json()
+          },
           (e) => console.error(e)
         )
-        .then(({ results }) => {
-          setAddress(results[0].formatted_address);
-        });
+        .then(
+          ({ results }) => {
+            results[0]={formatted_address:"here"}
+            setAddress(results[0].formatted_address)
+          },
+          (e) => console.error(e)
+        );
     }
-
+    Location.installWebGeolocationPolyfill() 
     navigator.geolocation.getCurrentPosition(setPosition);
 
     let watcher = navigator.geolocation.watchPosition(
       setPosition,
       (err) => console.error(err),
-      { enableHighAccuracy: true }
+      {maximumAge:60000, timeout:5000, enableHighAccuracy:true}
     );
 
     return () => {

@@ -1,14 +1,28 @@
 import React from "react";
-import { View } from "react-native";
-import styles from "./styles";
-import Box from "./components/Box";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import First from "./components/First";
+import Second from "./components/Second";
+import Third from "./components/Third";
+import Fourth from "./components/Fourth";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Box>#1</Box>
-      <Box>#2</Box>
-      <Box>#3</Box>
-    </View>
-  );
-}
+const routes = [First, Second, Third, Fourth];
+
+export default createAppContainer(
+  createStackNavigator(
+    routes.reduce(
+      (result, route) => ({
+        ...result,
+        [route.name]: route
+      }),
+      {}
+    ),
+    {
+      initialRouteName: "First",
+      initialRouteParams: {
+        progress: route =>
+          (routes.map(r => r.name).indexOf(route) + 1) / routes.length
+      }
+    }
+  )
+);

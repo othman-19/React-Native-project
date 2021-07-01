@@ -12,7 +12,7 @@ export default function Second() {
 }
 
 Second.navigationOptions = ({ navigation }) => ({
-  headerTitle: (
+  headerTitle: () => (
     <View style={styles.progress}>
       <Text style={styles.title}>Second</Text>
       <ProgressBar

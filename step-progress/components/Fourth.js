@@ -12,7 +12,7 @@ export default function Fourth() {
 }
 
 Fourth.navigationOptions = ({ navigation }) => ({
-  headerTitle: (
+  headerTitle: () => (
     <View style={styles.progress}>
       <Text style={styles.title}>Fourth</Text>
       <ProgressBar

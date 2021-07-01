@@ -12,7 +12,7 @@ export default function First() {
 }
 
 First.navigationOptions = ({ navigation }) => ({
-  headerTitle: (
+  headerTitle: () => (
     <View style={styles.progress}>
       <Text style={styles.title}>First</Text>
       <ProgressBar

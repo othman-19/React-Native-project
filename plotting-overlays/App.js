@@ -70,6 +70,13 @@ export default function App() {
             strokeWidth={v.strokeWidth}
           />
         ))}
+        {overlays.map((v, i) => (
+          <MapView.Marker
+            title="Duff Brewery"
+            description="Duff for me, Duff for you"
+            coordinate={v.coordinates[0]}
+          />
+        ))}
       </MapView>
     </View>
   );

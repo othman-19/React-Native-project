@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, Text } from "react-native";
 import MapView from "react-native-maps";
 import styles from "./styles";
@@ -27,11 +27,14 @@ const stoutRegion = {
   strokeWidth: 4
 };
 
-export default function App() {
+const markers=["Marker"];
 
+export default function App() {
+  
   const [ipaStyles, setIpaStyles] = useState([styles.ipaText, styles.boldText]);
   const [stoutStyles, setStoutStyles] = useState([styles.stoutText]);
   const [overlays, setOverlays] = useState([ipaRegion]);
+  const mapRef = useRef(null);
 
   function onClickIpa() {
     setIpaStyles([...ipaStyles, styles.boldText]);
@@ -44,7 +47,12 @@ export default function App() {
     setIpaStyles([ipaStyles[0]]);
     setOverlays([stoutRegion]);
   }
-
+  // useEffect(() => {
+  //   mapRef.current.fitToSuppliedMarkers(
+  //     markers,
+  //     false, // not animated
+  //   )
+  // },[])
 
   return (
     <View style={styles.container}>
@@ -61,6 +69,14 @@ export default function App() {
         showsPointsOfInterest={false}
         showsUserLocation
         followUserLocation
+        ref={mapRef}
+        onMapReady={() => {
+          mapRef.current.fitToSuppliedMarkers(
+            markers,
+            false, // not animated
+          )
+        }}
+
       >
         {overlays.map((v, i) => (
           <MapView.Polygon
@@ -72,6 +88,8 @@ export default function App() {
         ))}
         {overlays.map((v, i) => (
           <MapView.Marker
+            key={i}
+            identifier='Marker'
             title="Duff Brewery"
             description="Duff for me, Duff for you"
             coordinate={v.coordinates[0]}

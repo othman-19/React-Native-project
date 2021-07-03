@@ -1,15 +1,28 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: "ghostwhite"
   },
-  text: {
+
+  mapView: {
+    alignSelf: "stretch",
+    height: 250,
+    margin: 30
+  },
+
+  ipaText: {
+    color: "coral"
+  },
+
+  stoutText: {
+    color: "firebrick"
+  },
+
+  boldText: {
     fontWeight: "bold"
   }
 });
-
-export default styles;

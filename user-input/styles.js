@@ -1,15 +1,25 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "space-between",
+    backgroundColor: "ghostwhite",
+    padding: 10,
+    paddingTop: 20
   },
-  text: {
-    fontWeight: "bold"
+
+  textInputContainer: {
+    alignSelf: "stretch"
+  },
+
+  textInputLabel: {
+    marginBottom: 4
+  },
+
+  textInput: {
+    backgroundColor: "white",
+    height: 20,
+    fontSize: 11
   }
 });
-
-export default styles;

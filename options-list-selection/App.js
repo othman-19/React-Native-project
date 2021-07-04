@@ -5,7 +5,7 @@ import Select from "./Select";
 
 export default function SelectingOptions() {
   const [sizes, setSizes] = useState([
-    { label: "", value: null },
+    { label: "All sizes", value: 'All sizes' },
     { label: "S", value: "S" },
     { label: "M", value: "M" },
     { label: "L", value: "L" },
@@ -18,8 +18,8 @@ export default function SelectingOptions() {
     { label: "Pants", value: 3, sizes: ["S", "L"] },
     { label: "Hat", value: 4, sizes: ["M", "XL"] }
   ]);
-  const [availableGarments, setAvailableGarments] = useState([]);
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [availableGarments, setAvailableGarments] = useState(garments);
+  const [selectedSize, setSelectedSize] = useState('All sizes');
   const [selectedGarment, setSelectedGarment] = useState(null);
   const [selection, setSelection] = useState("");
 
@@ -32,7 +32,7 @@ export default function SelectingOptions() {
         onValueChange={size => {
           setSelectedSize(size);
           setSelectedGarment(null);
-          setAvailableGarments(garments.filter(i => i.sizes.includes(size)));
+          setAvailableGarments(garments.filter(i => size === 'All sizes' || i.sizes.includes(size)));
         }}
       />
 
